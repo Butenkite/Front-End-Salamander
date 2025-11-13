@@ -6,9 +6,19 @@ export default function Page() {
       <button>outputs</button>
     </nav>
     <div>
+      <li>
+        Video name
+        Video name
+        Video name
+      </li>
       <div>
       </div>
-      <aside></aside>
+      <aside>
+        <h2>Currently selected:  videoname </h2>
+        <div>
+          <button>start job </button>
+        </div>
+      </aside>
     </div>
   </main>
   )
