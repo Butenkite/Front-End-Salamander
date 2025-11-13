@@ -1,4 +1,7 @@
-export default function Page() {
+import videoList from "../samples/testVideoList.json";
+import Cardlist from "./Cardlist"
+
+export default function Page({videoList}) {
   return (
   <main>
     <nav>
@@ -6,11 +9,7 @@ export default function Page() {
       <button>outputs</button>
     </nav>
     <div>
-      <li>
-        Video name
-        Video name
-        Video name
-      </li>
+      <Cardlist list={videoList}/>
       <div>
       </div>
       <aside>
