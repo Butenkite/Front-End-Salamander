@@ -1,3 +1,3 @@
-export default function AboutPage() {
-  return <h1>This is the about page</h1>
+export default function Page() {
+  return <nav>Hello, Next.js!</nav>
 }
