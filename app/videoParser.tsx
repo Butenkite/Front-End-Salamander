@@ -1,5 +1,6 @@
 export function videoParser(videos) {
   return videos.map((item, index) => ({
-    name: item.name ?? "",
+    id: index + 1,
+    name: typeof item === 'string' ? item : item.name ?? "",
   }));
 }
