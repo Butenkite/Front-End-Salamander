@@ -1,5 +1,8 @@
 import videoList from "../samples/testVideoList.json";
 import Cardlist from "./Cardlist"
+import {videoParser} from "./videoParser"
+
+const parsedVideos = videoParser(videoList)
 
 export default function Page({videoList}) {
   return (
@@ -9,7 +12,7 @@ export default function Page({videoList}) {
       <button>outputs</button>
     </nav>
     <div>
-      <Cardlist list={videoList}/>
+      <Cardlist list={parsedVideos}/>
       <div>
       </div>
       <aside>
