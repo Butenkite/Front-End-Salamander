@@ -1,3 +1,11 @@
 export default function Page() {
-  return <nav>Hello, Next.js!</nav>
+  return (
+  <div>
+    <nav>
+      <h1>Salamander Finder</h1>
+      <button>outputs</button>
+    </nav>
+    <></>
+  </div>
+  )
 }
