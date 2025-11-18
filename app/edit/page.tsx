@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 
 export default function Page({videoList}) {
@@ -21,6 +23,11 @@ export default function Page({videoList}) {
                 <img src="/binarized.png" alt="binarized" />
             </div>
             <div>
+                <input type = "color"
+                value={color}
+                onChange={handleColorChange}
+            />
+            <p>Selected Color: {color}</p>
             </div>
         </body>
     </main>
