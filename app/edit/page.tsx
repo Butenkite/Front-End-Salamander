@@ -39,7 +39,7 @@ export default function Page({videoList}) {
                         <label htmlFor="threshold">Threshold</label>
                     <p>Selected Threshold: {threshold}</p>
                 </div> 
-                <button>home</button> 
+                <button>begin</button> 
             </div>
         </body>
     </main>
