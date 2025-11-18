@@ -18,16 +18,20 @@ export default function Page({videoList}) {
             <button>home</button>
         </nav>
         <body>
-            <div>
+            <div id = "images">
                 <img src="/squares.jpg" alt="image of four squares"/>
                 <img src="/binarized.png" alt="binarized" />
             </div>
-            <div>
+            <div id = "stats">
                 <input type = "color"
                 value={color}
                 onChange={handleColorChange}
-            />
-            <p>Selected Color: {color}</p>
+                />
+                <p>Selected Color: {color}</p>
+                <div>
+                    <input type="range" id="threshold" name="threshold" min="0" max="100" />
+                        <label htmlFor="threshold">Threshold</label>
+                </div>  
             </div>
         </body>
     </main>
