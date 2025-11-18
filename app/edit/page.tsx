@@ -34,11 +34,12 @@ export default function Page({videoList}) {
                 onChange={handleColorChange}
                 />
                 <p>Selected Color: {color}</p>
-                <div>
+                <div id = "threshold-box">
                     <input type="range" id="threshold" name="threshold" min="0" max="100" onChange={handleThresholdChange}/>
                         <label htmlFor="threshold">Threshold</label>
                     <p>Selected Threshold: {threshold}</p>
-                </div>  
+                </div> 
+                <button>home</button> 
             </div>
         </body>
     </main>
