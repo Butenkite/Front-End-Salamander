@@ -1,47 +1,58 @@
 "use client";
 
 import React, { useState } from 'react';
+import "./edit.css"
 
-export default function Page({videoList}) {
+export default function Page({ videoList }) {
+  const [color, setColor] = useState('#ffffff');
+  const [threshold, setThreshold] = useState('0');
 
-    const [color, setColor] = useState('#ffffff'); // Initial color
+  return (
+    <main className="app-container">
+      <nav className="top-nav">
+        <h1 className="logo">Salamander Finder</h1>
+        <button className="nav-btn">Home</button>
+      </nav>
 
-    const [threshold, setThreshold] = useState('0'); // Initial threshold
+      <section className="content-layout-2">
+        <div className="image-panel">
+          <img src="/squares.jpg" alt="image of four squares" className="preview-img" />
+          <img src="/binarized.png" alt="binarized" className="preview-img" />
+        </div>
 
-    const handleColorChange = (event) => {
-        setColor(event.target.value);
-    };
+        <aside className="control-panel">
+          <h2 className="panel-title">Image Processing Controls</h2>
 
-    const handleThresholdChange = (event) => {
-        setThreshold(event.target.value);
-    };
+          {/* COLOR PICKER */}
+          <div className="control-block">
+            <label className="control-label">Pick Color</label>
+            <input
+              type="color"
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+              className="color-picker"
+            />
+            <p className="value-text">Selected Color: {color}</p>
+          </div>
 
+          {/* THRESHOLD SLIDER */}
+          <div className="control-block">
+            <label htmlFor="threshold" className="control-label">Threshold</label>
+            <input
+              type="range"
+              id="threshold"
+              min="0"
+              max="100"
+              value={threshold}
+              onChange={(e) => setThreshold(e.target.value)}
+              className="slider"
+            />
+            <p className="value-text">Selected Threshold: {threshold}</p>
+          </div>
 
-    return(
-    <main>
-        <nav>
-            <h1>Salamander Finder</h1>
-            <button>home</button>
-        </nav>
-        <body>
-            <div id = "images">
-                <img src="/squares.jpg" alt="image of four squares"/>
-                <img src="/binarized.png" alt="binarized" />
-            </div>
-            <div id = "stats">
-                <input type = "color"
-                value={color}
-                onChange={handleColorChange}
-                />
-                <p>Selected Color: {color}</p>
-                <div id = "threshold-box">
-                    <input type="range" id="threshold" name="threshold" min="0" max="100" onChange={handleThresholdChange}/>
-                        <label htmlFor="threshold">Threshold</label>
-                    <p>Selected Threshold: {threshold}</p>
-                </div> 
-                <button>begin</button> 
-            </div>
-        </body>
+          <button className="start-btn">Begin</button>
+        </aside>
+      </section>
     </main>
-    )
+  );
 }
