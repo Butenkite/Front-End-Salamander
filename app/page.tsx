@@ -1,7 +1,7 @@
 import videoList from "../samples/testVideoList.json";
 import Cardlist from "./Cardlist";
 import { videoParser } from "./videoParser";
-import './page.css';
+import './home.css';
 
 const parsedVideos = videoParser(videoList);
 
