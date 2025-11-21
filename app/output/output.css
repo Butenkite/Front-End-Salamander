@@ -1,0 +1,78 @@
+/* Color Palette
+--light:      #DAD7CD;
+--sage:       #A3B18A;
+--green:      #588157;
+--forest:     #3A5A40;
+--darkgreen:  #344E41;
+*/
+/* GLOBAL */
+.output-container {
+  font-family: Inter, sans-serif;
+  background: #344E41;
+  color: #DAD7CD;
+  min-height: 100vh;
+}
+
+/* NAVIGATION */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #3A5A40;
+  border-bottom: 2px solid #588157;
+}
+
+.nav-btn {
+  background: #588157;
+  color: #DAD7CD;
+  border: 1px solid #A3B18A;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: 0.2s ease;
+}
+
+.nav-btn:hover {
+  background: #3A5A40;
+}
+
+.nav-right {
+  display: flex;
+  gap: 1rem;
+}
+
+.output-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.output-card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+
+.scroll-box {
+  border: 1px solid #aaa;
+  height: 260px;
+  overflow-y: scroll;
+  text-align: left;
+  padding: 0.5rem;
+}
+
+/* BUTTON */
+.delete-btn {
+  background: #588157;
+  color: #DAD7CD;
+  border: 1px solid #A3B18A;
+  padding: 0.7rem 1.2rem;
+  width: 100%;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.delete-btn:hover {
+  transform: scale(1.03);
+  background: #3A5A40;
+}

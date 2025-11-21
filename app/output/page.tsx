@@ -5,14 +5,57 @@ import "./output.css";
 
 export default function OutputPage(){
     //im putting example data as this will need to be replace by API results
-return(
+    const outputs  = [
+        {
+        name: "Salamander video 1",
+        csv: ["1 5 8", "2 5 8", "3 5 8", "4 5 8", "5 5 8"],
+        done: true,
+        },
+         {
+        name: "Salamander video 2",
+        csv: ["1", "2", "3", "4", "5", "6", "7", "8"],
+        done: true,
+        },
+        {
+        name: "Salamander video 3",
+        csv: [],
+        done: false,
+        },
+    ]
+    return(
     <main className="output-container">
-        <h1 className="title">Salamander Video Output</h1>
+        <nav className="top-nav">
+        <h1 className="logo">Salamander Video Output</h1>
+          <div className="nav-right">
+        <button className="nav-btn">Home</button>
+        <button className="nav-btn">Edit</button>
+          </div>
+        </nav>
 
         <p className="instructions">
          Output Instructions: select the link of the video output and a csv file
         should pop up and have the ability to scroll through the results
         </p>
+
+         <section className="output-grid">
+        {outputs.map((out, index) => (
+          <div key={index} className="output-card">
+            <h2 className="video-title">{out.name}</h2>
+
+            <div className="scroll-box">
+              {out.done ? (
+                out.csv.map((line, i) => <p key={i}>{line}</p>)
+              ) : (
+                <p>STILL PROCESSING</p>
+              )}
+            </div>
+
+            <p className="csv-label">Output csv {index + 1}</p>
+
+            <button className="delete-btn">Delete Output</button>
+          </div>
+        ))}
+      </section>
     </main>
 )
 }
