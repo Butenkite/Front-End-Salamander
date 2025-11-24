@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import "./edit.css"
+import Link from "next/link";
 
 export default function Page({ videoList }) {
   const [color, setColor] = useState('#ffffff');
@@ -11,7 +12,7 @@ export default function Page({ videoList }) {
     <main className="app-container">
       <nav className="top-nav">
         <h1 className="logo">Salamander Finder</h1>
-        <button className="nav-btn">Home</button>
+        <Link href="/" className="nav-btn">Home</Link>
       </nav>
 
       <section className="content-layout-2">

@@ -2,6 +2,7 @@ import videoList from "../samples/testVideoList.json";
 import Cardlist from "./Cardlist";
 import { videoParser } from "./videoParser";
 import './home.css';
+import Link from "next/link";
 
 const parsedVideos = videoParser(videoList);
 
@@ -10,7 +11,7 @@ export default function Page({ videoList }) {
     <main className="app-container">
       <nav className="top-nav">
         <h1 className="logo">Salamander Finder</h1>
-        <button className="nav-btn">Outputs</button>
+        <Link href="/output" className="nav-btn">Outputs</Link>
       </nav>
 
       <section className="content-layout">

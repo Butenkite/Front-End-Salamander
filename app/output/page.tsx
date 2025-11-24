@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import "./output.css";
+import Link from "next/link";
 
 export default function OutputPage(){
     //im putting example data as this will need to be replace by API results
@@ -27,8 +28,8 @@ export default function OutputPage(){
         <nav className="top-nav">
         <h1 className="logo">Salamander Video Output</h1>
           <div className="nav-right">
-        <button className="nav-btn">Home</button>
-        <button className="nav-btn">Edit</button>
+        <Link href="/" className="nav-btn">Home</Link>
+        <Link href="/edit" className="nav-btn">Edit</Link>
           </div>
         </nav>
 
