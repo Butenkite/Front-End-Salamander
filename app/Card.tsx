@@ -1,6 +1,6 @@
-export default function Card({ video }) {
+export default function Card({ video, onClick }) {
     return(
-        <div>
+        <div className="card-item" onClick={onClick}>
             <p>{video.name}</p>
         </div>
     )
