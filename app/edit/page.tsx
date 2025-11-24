@@ -1,10 +1,13 @@
 "use client";
-
+import { useSearchParams } from 'next/navigation';
 import React, { useState } from 'react';
 import "./edit.css"
 import Link from "next/link";
 
-export default function Page({ videoList }) {
+export default function Page() {
+  const searchParams =  useSearchParams();
+  const video = searchParams.get("video");
+
   const [color, setColor] = useState('#ffffff');
   const [threshold, setThreshold] = useState('0');
 
@@ -22,7 +25,7 @@ export default function Page({ videoList }) {
         </div>
 
         <aside className="control-panel">
-          <h2 className="panel-title">Image Processing Controls</h2>
+          <h2 className="panel-title">Editing: {video}</h2>
 
           {/* COLOR PICKER */}
           <div className="control-block">
