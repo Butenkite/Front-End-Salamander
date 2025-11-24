@@ -15,7 +15,10 @@ export default function Page() {
     <main className="app-container">
       <nav className="top-nav">
         <h1 className="logo">Salamander Finder</h1>
+        <div className="nav-right">
         <Link href="/" className="nav-btn">Home</Link>
+        <Link href="/output" className="nav-btn">Output</Link>
+        </div>
       </nav>
 
       <section className="content-layout-2">

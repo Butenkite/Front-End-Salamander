@@ -43,6 +43,11 @@
   background: #3A5A40;
 }
 
+.nav-right {
+  display: flex;
+  gap: 1rem;
+}
+
 /* MAIN LAYOUT */
 .content-layout-2 {
   display: grid;
