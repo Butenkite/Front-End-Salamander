@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useState } from 'react';
 import "./output.css";
 import Link from "next/link";
 
@@ -45,8 +44,12 @@ export default function OutputPage(){
 
             <div className="scroll-box">
               {out.done ? (
+                out.csv.length > 0? (
                 out.csv.map((line, i) => <p key={i}>{line}</p>)
               ) : (
+                <p>No CSV data available</p>
+              )
+            ) : (
                 <p>STILL PROCESSING</p>
               )}
             </div>
