@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {useRouter } from "next/navigation";
 import Link from "next/link";
 import videoList from "../samples/testVideoList.json";
@@ -15,12 +15,26 @@ export default function Page() {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const router = useRouter();
 
+  //FETCHING backend on page load
+  useEffect(() => {
+    async function loadVideos(){
+      try{
+        const res = await fetch("http://localhost:3000/api/videos");
+        const data = await res.json();
+      } catch (err) {
+        console.error("Error fetching videos:", err);
+      }
+    }
+    loadVideos();
+  }, []);
+
+
+
   return (
     <main className="app-container">
       <nav className="top-nav">
         <h1 className="logo">Salamander Finder</h1>
         <div className="nav-right">
-        <Link href="/edit" className="nav-btn">Edit</Link>
         <Link href="/output" className="nav-btn">Outputs</Link>
         </div>
       </nav>
