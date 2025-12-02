@@ -8,7 +8,7 @@ import Cardlist from "./Cardlist";
 import { videoParser } from "./videoParser";
 import './home.css';
 
-
+console.log("CURRENT WORKING DIR:", process.cwd());
 const parsedVideos = videoParser(videoList);
 
 export default function Page() {
