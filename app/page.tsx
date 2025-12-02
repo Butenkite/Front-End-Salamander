@@ -3,15 +3,13 @@
 import { useEffect, useState } from "react";
 import {useRouter } from "next/navigation";
 import Link from "next/link";
-import videoList from "../samples/testVideoList.json";
 import Cardlist from "./Cardlist";
-import { videoParser } from "./videoParser";
 import './home.css';
 
 console.log("CURRENT WORKING DIR:", process.cwd());
-const parsedVideos = videoParser(videoList);
 
 export default function Page() {
+  const [videos, setVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const router = useRouter();
 
@@ -19,8 +17,15 @@ export default function Page() {
   useEffect(() => {
     async function loadVideos(){
       try{
-        const res = await fetch("http://localhost:3000/api/videos");
+        const res = await fetch("/api/videos");
         const data = await res.json();
+        console.log("Fetch Response", data);
+        
+        if (Array.isArray(data)){
+          setVideos(data);
+        } else {
+          console.error("Invalid response format: ", data);
+        }
       } catch (err) {
         console.error("Error fetching videos:", err);
       }
@@ -42,7 +47,7 @@ export default function Page() {
       <section className="content-layout">
         <div className="cardlist-section">
           <Cardlist 
-            list={parsedVideos}
+            list={videos}
             onSelect={setSelectedVideo}
           />
         </div>
