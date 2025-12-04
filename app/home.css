@@ -98,3 +98,78 @@
 .start-btn:hover {
   background: #3A5A40;
 }
+
+/* CARD STYLING */
+.card-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #3A5A40;
+  border: 2px solid #588157;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.card-item:hover {
+  background: #588157;
+  transform: translateX(4px);
+  border-color: #A3B18A;
+}
+
+.card-item.selected {
+  background: #588157;
+  border-color: #A3B18A;
+  box-shadow: 0 0 0 3px rgba(163, 177, 138, 0.3);
+}
+
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #588157;
+  border-radius: 8px;
+  color: #DAD7CD;
+  flex-shrink: 0;
+}
+
+.card-item.selected .card-icon {
+  background: #A3B18A;
+  color: #344E41;
+}
+
+.card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #DAD7CD;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-subtitle {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.875rem;
+  color: #A3B18A;
+}
+
+.card-arrow {
+  font-size: 1.5rem;
+  color: #A3B18A;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.card-item:hover .card-arrow,
+.card-item.selected .card-arrow {
+  opacity: 1;
+}

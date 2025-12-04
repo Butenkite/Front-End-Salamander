@@ -49,6 +49,7 @@ export default function Page() {
           <Cardlist 
             list={videos}
             onSelect={setSelectedVideo}
+            selectedVideo={selectedVideo}
           />
         </div>
 
