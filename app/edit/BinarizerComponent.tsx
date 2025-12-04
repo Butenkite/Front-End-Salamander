@@ -3,36 +3,54 @@
 import { useRef, useState, useEffect } from 'react';
 import { binarizeImage } from './imageBinarizerUtils';
 
-export default function ImageBinarizer() {
+interface ImageBinarizerProps {
+  videoName?: string;
+}
+
+export default function ImageBinarizer({ videoName }: ImageBinarizerProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const outputCanvasRef = useRef<HTMLCanvasElement>(null);
   const [targetColor, setTargetColor] = useState('#FF6600'); // Default orange color
   const [threshold, setThreshold] = useState(100);
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+  // Fetch image from API on component mount
+  useEffect(() => {
+    if (!videoName) return;
 
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const img = new Image();
-      img.onload = () => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
+    const loadImage = async () => {
+      try {
+        const res = await fetch(`/api/thumbnail/${videoName}`);
+        if (!res.ok) {
+          console.error('Failed to fetch thumbnail');
+          return;
+        }
 
-        canvas.width = img.width;
-        canvas.height = img.height;
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
+        const blob = await res.blob();
+        const imageUrl = URL.createObjectURL(blob);
 
-        ctx.drawImage(img, 0, 0);
-        setImageLoaded(true);
-      };
-      img.src = event.target?.result as string;
+        const img = new Image();
+        img.onload = () => {
+          const canvas = canvasRef.current;
+          if (!canvas) return;
+
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) return;
+
+          ctx.drawImage(img, 0, 0);
+          setImageLoaded(true);
+          URL.revokeObjectURL(imageUrl);
+        };
+        img.src = imageUrl;
+      } catch (error) {
+        console.error('Error loading thumbnail:', error);
+      }
     };
-    reader.readAsDataURL(file);
-  };
+
+    loadImage();
+  }, [videoName]);
 
   const processBinarization = () => {
     const canvas = canvasRef.current;
@@ -56,17 +74,8 @@ export default function ImageBinarizer() {
   };
 
   return (
-    // be ready to remove this once we have the image thumbnail working
     <div style={{ padding: '20px' }}>
       <h2>Image Binarizer</h2>
-      <div style={{ marginBottom: '20px' }}>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImageUpload}
-          style={{ marginBottom: '10px' }}
-        />
-      </div>
 
       <div style={{ marginBottom: '20px' }}>
         <label>

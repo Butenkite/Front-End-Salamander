@@ -1,6 +1,7 @@
 "use client";
+
 import { useSearchParams } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./edit.css"
 import Link from "next/link";
 import ImageBinarizer from './BinarizerComponent';
@@ -23,7 +24,7 @@ export default function Page() {
       </nav>
 
       <section className="content-layout-2">
-        <ImageBinarizer />
+        <ImageBinarizer videoName={video || undefined} />
       </section>
     </main>
   );
