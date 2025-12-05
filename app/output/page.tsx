@@ -1,27 +1,25 @@
 "use client";
-
+import {useEffect, useState } from "react";
 import "./output.css";
 import Link from "next/link";
 
 export default function OutputPage(){
-    //im putting example data as this will need to be replace by API results
-    const outputs  = [
-        {
-        name: "Salamander video 1",
-        csv: ["1 5 8", "2 5 8", "3 5 8", "4 5 8", "5 5 8"],
-        done: true,
-        },
-         {
-        name: "Salamander video 2",
-        csv: ["1", "2", "3", "4", "5", "6", "7", "8"],
-        done: true,
-        },
-        {
-        name: "Salamander video 3",
-        csv: [],
-        done: false,
-        },
-    ]
+    const [outputs, setOutputs] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+      async function loadOutputs(){
+        try{
+          const res = await fetch("http://localhost/api/status");
+          const data = await res.json();
+          setOutputs(data);
+      } catch (err) {
+        console.error("failed to fetch outputs:", err);
+      } 
+      }
+      loadOutputs();
+    }, []);
+
     return(
     <main className="output-container">
         <nav className="top-nav">
@@ -61,5 +59,5 @@ export default function OutputPage(){
         ))}
       </section>
     </main>
-)
+);
 }
