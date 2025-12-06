@@ -5,17 +5,16 @@ import Link from "next/link";
 
 export default function OutputPage(){
     const [outputs, setOutputs] = useState([]);
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
       async function loadOutputs(){
         try{
-          const res = await fetch("http://localhost/api/status");
+          const res = await fetch("http://localhost:3000/api/status");
           const data = await res.json();
           setOutputs(data);
       } catch (err) {
         console.error("failed to fetch outputs:", err);
-      } 
+        } 
       }
       loadOutputs();
     }, []);
@@ -36,6 +35,10 @@ export default function OutputPage(){
         </p>
 
          <section className="output-grid">
+          {outputs.length === 0 && (
+          <p style={{ color: "white" }}>No CSV outputs found.</p>
+        )}
+          
         {outputs.map((out, index) => (
           <div key={index} className="output-card">
             <h2 className="video-title">{out.name}</h2>
